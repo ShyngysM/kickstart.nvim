@@ -189,15 +189,15 @@ require('lazy').setup({
     },
   },
 
-  --  {
-  --    -- Theme inspired by Atom
-  --    'navarasu/onedark.nvim',
-  --    priority = 1000,
-  --    config = function()
-  --      vim.cmd.colorscheme 'tokyonight'
-  --    end,
-  --  },
-  --
+  {
+    -- Theme inspired by Atom
+    'navarasu/onedark.nvim',
+    priority = 1000,
+    config = function()
+      -- vim.cmd.colorscheme 'tokyonight'
+    end,
+  },
+
   {
     -- Set lualine as statusline
     'nvim-lualine/lualine.nvim',
@@ -660,72 +660,29 @@ cmp.setup {
 }
 
 -- Shyngys's mappings
-vim.cmd.colorscheme 'tokyonight'
+vim.cmd.colorscheme 'onedark'
 
-vim.keymap.set('n', '<leader>e', ':Neotree toggle <CR>', { desc = 'File manager' })
-vim.keymap.set('n', '<leader>T', ':Telescope colorscheme <CR>', { desc = 'File manager' })
+vim.keymap.set('n', '<leader>e', ':Neotree toggle <CR>', { desc = 'File tree' })
+vim.keymap.set('n', '<leader>T', ':Telescope colorscheme <CR>', { desc = 'Theme' })
 
-vim.api.nvim_create_augroup("nobg", { clear = true })
-vim.api.nvim_create_autocmd({ "ColorScheme" }, {
-  desc = "Make all backgrounds transparent",
-  group = "nobg",
-  pattern = "*",
-  callback = function()
-    vim.api.nvim_set_hl(0, "Normal", { bg = "NONE", ctermbg = "NONE" })
-    vim.api.nvim_set_hl(0, "NeoTreeNormal", { bg = "NONE", ctermbg = "NONE" })
-    vim.api.nvim_set_hl(0, "NeoTreeNormalNC", { bg = "NONE", ctermbg = "NONE" })
-    vim.api.nvim_set_hl(0, "TelescopeNormal", { bg = "NONE", ctermbg = "NONE" })
-    -- etc...
-  end,
-})
+vim.keymap.set('n', '<leader>l', ':lua require("nvterm.terminal").toggle "vertical" <CR>', { desc = 'Terminal vertical' })
+vim.keymap.set('n', '<leader>j', ':lua require("nvterm.terminal").toggle "horizontal" <CR>',
+  { desc = 'Terminal horizontal' })
+vim.keymap.set('t', '<ESC>', "<C-\\><C-n><C-w>h", { silent = true })
+-- vim.api.nvim_create_augroup("nobg", { clear = true })
+-- vim.api.nvim_create_autocmd({ "ColorScheme" }, {
+--   desc = "Make all backgrounds transparent",
+--   group = "nobg",
+--   pattern = "*",
+--   callback = function()
+--     vim.api.nvim_set_hl(0, "Normal", { bg = "NONE", ctermbg = "NONE" })
+--     vim.api.nvim_set_hl(0, "NeoTreeNormal", { bg = "NONE", ctermbg = "NONE" })
+--     vim.api.nvim_set_hl(0, "NeoTreeNormalNC", { bg = "NONE", ctermbg = "NONE" })
+--     vim.api.nvim_set_hl(0, "TelescopeNormal", { bg = "NONE", ctermbg = "NONE" })
+--     -- etc...
+--   end,
+-- })
 
--- Comment
-require('Comment').setup(
-
-  {
-    ---Add a space b/w comment and the line
-    padding = true,
-    ---Whether the cursor should stay at its position
-    sticky = true,
-    ---Lines to be ignored while (un)comment
-    ignore = nil,
-    ---LHS of toggle mappings in NORMAL mode
-    toggler = {
-      ---Line-comment toggle keymap
-      line = 'gcc',
-      ---Block-comment toggle keymap
-      block = 'gbc',
-    },
-    ---LHS of operator-pending mappings in NORMAL and VISUAL mode
-    opleader = {
-      ---Line-comment keymap
-      line = 'gc',
-      ---Block-comment keymap
-      block = 'gb',
-    },
-    ---LHS of extra mappings
-    extra = {
-      ---Add comment on the line above
-      above = 'gcO',
-      ---Add comment on the line below
-      below = 'gco',
-      ---Add comment at the end of line
-      eol = 'gcA',
-    },
-    ---Enable keybindings
-    ---NOTE: If given `false` then the plugin won't create any mappings
-    mappings = {
-      ---Operator-pending mapping; `gcc` `gbc` `gc[count]{motion}` `gb[count]{motion}`
-      basic = true,
-      ---Extra mapping; `gco`, `gcO`, `gcA`
-      extra = true,
-    },
-    ---Function to call before (un)comment
-    pre_hook = nil,
-    ---Function to call after (un)comment
-    post_hook = nil,
-  }
-)
 
 
 -- The line beneath this is called `modeline`. See `:help modeline`
