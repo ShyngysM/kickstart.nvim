@@ -1,5 +1,4 @@
 --[[
-
 =====================================================================
 ==================== READ THIS BEFORE CONTINUING ====================
 =====================================================================
@@ -565,7 +564,7 @@ require('mason-lspconfig').setup()
 --  If you want to override the default filetypes that your language server will attach to you can
 --  define the property 'filetypes' to the map in question.
 local servers = {
-  -- clangd = {},
+  clangd = {},
   -- gopls = {},
   -- pyright = {},
   -- rust_analyzer = {},
@@ -662,13 +661,17 @@ cmp.setup {
 -- Shyngys's mappings
 vim.cmd.colorscheme 'onedark'
 
-vim.keymap.set('n', '<leader>e', ':Neotree toggle <CR>', { desc = 'File tree' })
-vim.keymap.set('n', '<leader>T', ':Telescope colorscheme <CR>', { desc = 'Theme' })
+vim.keymap.set('n', '<leader>e', ':Neotree toggle <CR>', { desc = 'File [E]xplorer' })
+-- vim.keymap.set('n', '<leader>e', ':wq <CR> :!ranger <CR>', { desc = 'File tree' })
+vim.keymap.set('n', '<leader>tp', ':Telescope colorscheme <CR>', { desc = '[T]heme [P]icker' })
+vim.keymap.set('n', '<leader>tt', ':TransparentToggle <CR>', { desc = '[T]oggle [T]ransparency' })
+vim.keymap.set('n', '<leader>td', ':lua vim.diagnostic.disable <CR>', { desc = 'Diagnostic [D]isable' })
+vim.keymap.set('n', '<leader>te', ':lua vim.diagnostic.enable <CR>', { desc = 'Diagnostic [E]nable' })
 
 vim.keymap.set('n', '<leader>l', ':lua require("nvterm.terminal").toggle "vertical" <CR>', { desc = 'Terminal vertical' })
 vim.keymap.set('n', '<leader>j', ':lua require("nvterm.terminal").toggle "horizontal" <CR>',
   { desc = 'Terminal horizontal' })
-vim.keymap.set('t', '<ESC>', "<C-\\><C-n><C-w>h", { silent = true })
+vim.keymap.set('t', '<ESC>', "<C-\\><C-n><C-w>k", { silent = true })
 -- vim.api.nvim_create_augroup("nobg", { clear = true })
 -- vim.api.nvim_create_autocmd({ "ColorScheme" }, {
 --   desc = "Make all backgrounds transparent",
@@ -683,6 +686,7 @@ vim.keymap.set('t', '<ESC>', "<C-\\><C-n><C-w>h", { silent = true })
 --   end,
 -- })
 
+-- vim.keymap.set('n', '<leader>n', ':TransparentToggle <CR>', { desc = 'Neovim settings' })
 
 
 -- The line beneath this is called `modeline`. See `:help modeline`
