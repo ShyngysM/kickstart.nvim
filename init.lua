@@ -188,14 +188,6 @@ require('lazy').setup({
     },
   },
 
-  {
-    -- Theme inspired by Atom
-    'navarasu/onedark.nvim',
-    priority = 1000,
-    config = function()
-      -- vim.cmd.colorscheme 'tokyonight'
-    end,
-  },
 
   {
     -- Set lualine as statusline
@@ -659,7 +651,7 @@ cmp.setup {
 }
 
 -- Shyngys's mappings
-vim.cmd.colorscheme 'onedark'
+-- vim.cmd.colorscheme 'onedark'
 
 vim.keymap.set('n', '<leader>e', ':Neotree toggle <CR>', { desc = 'File [E]xplorer' })
 -- vim.keymap.set('n', '<leader>e', ':wq <CR> :!ranger <CR>', { desc = 'File tree' })
@@ -672,21 +664,13 @@ vim.keymap.set('n', '<leader>l', ':lua require("nvterm.terminal").toggle "vertic
 vim.keymap.set('n', '<leader>j', ':lua require("nvterm.terminal").toggle "horizontal" <CR>',
   { desc = 'Terminal horizontal' })
 vim.keymap.set('t', '<ESC>', "<C-\\><C-n><C-w>k", { silent = true })
--- vim.api.nvim_create_augroup("nobg", { clear = true })
--- vim.api.nvim_create_autocmd({ "ColorScheme" }, {
---   desc = "Make all backgrounds transparent",
---   group = "nobg",
---   pattern = "*",
---   callback = function()
---     vim.api.nvim_set_hl(0, "Normal", { bg = "NONE", ctermbg = "NONE" })
---     vim.api.nvim_set_hl(0, "NeoTreeNormal", { bg = "NONE", ctermbg = "NONE" })
---     vim.api.nvim_set_hl(0, "NeoTreeNormalNC", { bg = "NONE", ctermbg = "NONE" })
---     vim.api.nvim_set_hl(0, "TelescopeNormal", { bg = "NONE", ctermbg = "NONE" })
---     -- etc...
---   end,
--- })
 
--- vim.keymap.set('n', '<leader>n', ':TransparentToggle <CR>', { desc = 'Neovim settings' })
+-- Not realy works, intendet to make Neotree also transparent for each theme
+-- vim.api.nvim_set_hl(0, "Normal", { bg = "NONE", ctermbg = "NONE" })
+-- vim.api.nvim_set_hl(0, "NeoTreeNormal", { bg = "NONE", ctermbg = "NONE" })
+-- vim.api.nvim_set_hl(0, "NeoTreeNormalNC", { bg = "NONE", ctermbg = "NONE" })
+-- vim.api.nvim_set_hl(0, "TelescopeNormal", { bg = "NONE", ctermbg = "NONE" })
+
 
 
 -- The line beneath this is called `modeline`. See `:help modeline`
