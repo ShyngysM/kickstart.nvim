@@ -651,7 +651,7 @@ cmp.setup {
   },
 }
 
--- Shyngys's mappings
+-- Shyngys's mappings ++
 -- vim.cmd.colorscheme 'onedark'
 
 vim.keymap.set('n', '<leader>e', ':Neotree toggle <CR>', { desc = 'File [E]xplorer' })
