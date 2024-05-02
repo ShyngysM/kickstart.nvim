@@ -270,6 +270,7 @@ vim.o.hlsearch = true
 
 -- Make line numbers default
 vim.wo.relativenumber = true
+vim.wo.number = true
 -- vim.wo.transparency = true
 
 -- Enable mouse mode
