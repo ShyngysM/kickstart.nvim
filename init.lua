@@ -1035,5 +1035,12 @@ require('lazy').setup({
   },
 })
 
+vim.keymap.set('n', '<leader>tp', ':Telescope colorscheme <CR>', { desc = '[T]heme [P]icker' })
+vim.keymap.set('n', '<leader>tt', ':TransparentToggle <CR>', { desc = '[T]oggle [T]ransparency' })
+vim.keymap.set('n', '<leader>td', ':lua vim.diagnostic.disable <CR>', { desc = 'Diagnostic [D]isable' })
+vim.keymap.set('n', '<leader>te', ':lua vim.diagnostic.enable <CR>', { desc = 'Diagnostic [E]nable' })
+
+vim.keymap.set('n', '<leader>l', ':lua require("nvterm.terminal").toggle "vertical" <CR>', { desc = 'Terminal vertical' })
+vim.keymap.set('n', '<leader>j', ':lua require("nvterm.terminal").toggle "horizontal" <CR>', { desc = 'Terminal horizontal' })
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
