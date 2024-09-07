@@ -174,7 +174,7 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 --
 -- NOTE: This won't work in all terminal emulators/tmux/etc. Try your own mapping
 -- or just use <C-\><C-n> to exit terminal mode
-vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
+vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
 -- TIP: Disable arrow keys in normal mode
 -- vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
@@ -190,6 +190,10 @@ vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left wind
 vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
+vim.keymap.set('t', '<C-h>', '<C-\\><C-n><CR><C-w><C-h>', { desc = 'Move focus to the left window' })
+vim.keymap.set('t', '<C-l>', '<C-\\><C-n><CR><C-w><C-l>', { desc = 'Move focus to the right window' })
+vim.keymap.set('t', '<C-j>', '<C-\\><C-n><CR><C-w><C-j>', { desc = 'Move focus to the lower window' })
+vim.keymap.set('t', '<C-k>', '<C-\\><C-n><CR><C-w><C-k>', { desc = 'Move focus to the upper window' })
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
@@ -569,7 +573,7 @@ require('lazy').setup({
         clangd = {},
         -- gopls = {},
         pyright = {},
-        -- latex = {},
+        -- texlab = {},
         -- rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
@@ -786,7 +790,7 @@ require('lazy').setup({
       -- Load the colorscheme here.
       -- Like many other themes, this one has different styles, and you could load
       -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-      vim.cmd.colorscheme 'tokyonight-night'
+      vim.cmd.colorscheme 'vscode'
 
       -- You can configure highlights by doing something like:
       vim.cmd.hi 'Comment gui=none'
@@ -916,11 +920,17 @@ vim.keymap.set('n', '<leader>tt', ':TransparentToggle <CR>', { desc = '[T]oggle 
 vim.keymap.set('n', '<leader>td', ':lua vim.diagnostic.disable() <CR>', { desc = 'Diagnostic [D]isable' })
 vim.keymap.set('n', '<leader>te', ':lua vim.diagnostic.enable() <CR>', { desc = 'Diagnostic [E]nable' })
 
-vim.keymap.set('n', '<leader>l', ':lua require("nvterm.terminal").toggle "vertical" <CR>', { desc = 'Terminal vertical' })
-vim.keymap.set('n', '<leader>j', ':lua require("nvterm.terminal").toggle "horizontal" <CR>', { desc = 'Terminal horizontal' })
+vim.keymap.set('n', '<leader>l', ':lua require("nvterm.terminal").toggle "vertical" <CR>', { desc = 'Toggle terminal vertical' })
+-- vim.keymap.set('t', '<leader>l', '<C-\\><C-n><CR> :lua require("nvterm.terminal").toggle "vertical" <CR>', { desc = 'Toggle terminal vertical' })
+vim.keymap.set('n', '<leader>j', ':lua require("nvterm.terminal").toggle "horizontal" <CR>', { desc = 'Toggle terminal horizontal' })
+-- vim.keymap.set('t', '<leader>j', '<C-\\><C-n><CR> :lua require("nvterm.terminal").toggle "horizontal" <CR>', { desc = 'Toggle terminal horizontal' })
+vim.keymap.set('n', '<C-S-h>', ':vertical resize +5 <CR>')
+vim.keymap.set('n', '<C-S-l>', ':vertical resize -5 <CR>')
+vim.keymap.set('n', '<leader>e', ':Lexplore | vertical resize 30 <CR>', { desc = 'netrw' })
 
 vim.keymap.set('n', '<leader>e', ':Lexplore | vertical resize 30 <CR>', { desc = 'netrw' })
-vim.keymap.set('n', '<C-e>', ':Lexplore | vertical resize 30 <CR>', { desc = 'netrw' })
-vim.keymap.set('n', '<C-q>', ':q <CR>', { desc = 'quick quit' })
+-- vim.keymap.set('t', '<leader>e', '<C-\\><C-n><CR> :Lexplore | vertical resize 30 <CR>', { desc = 'netrw' })
+vim.keymap.set('n', '<C-S-q>', ':qall <CR>', { desc = 'quick quit all' })
+vim.keymap.set('n', '<C-q>', ':q <CR>', { desc = 'quick quit ' })
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
