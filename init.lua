@@ -461,6 +461,11 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>sn', function()
         builtin.find_files { cwd = vim.fn.stdpath 'config' }
       end, { desc = '[S]earch [N]eovim files' })
+
+      -- Shortcut for searching your home directory files
+      vim.keymap.set('n', '<leader>s~', function()
+        builtin.find_files { cwd = '/home/archingis/' }
+      end, { desc = '[S]earch [~/] files' })
     end,
   },
 
@@ -675,9 +680,9 @@ require('lazy').setup({
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
         clangd = {},
+        pylsp = {},
         -- gopls = {},
-        pyright = {},
-        -- texlab = {},
+        texlab = {},
         -- rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
