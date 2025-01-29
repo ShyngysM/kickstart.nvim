@@ -679,7 +679,49 @@ require('lazy').setup({
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
-        clangd = {},
+        clangd = {
+          -- cmd = {
+          -- 'clang -I /home/archingis/STM32Cube/Repository/STM32Cube_FW_H7_V1.11.1/Drivers/Inc',
+          -- '-I/home/archingis/STM32Cube/Repository/STM32Cube_FW_H7_V1.11.1/Drivers/CMSIS/Device/ST/STM32H7xx/Include',
+          -- '-I/home/archingis/STM32Cube/Repository/STM32Cube_FW_H7_V1.11.1/Drivers/CMSIS/Include',
+          -- },
+          settings = {
+            clangd = {
+              runtime = {
+                path = '~/STM32Cube/Repository/STM32Cube_FW_H7_V1.11.1/Drivers/Inc',
+                -- path = '-I /home/archingis/STM32Cube/Repository/STM32Cube_FW_H7_V1.11.1/Drivers/CMSIS/Device/ST/STM32H7xx/Include',
+                -- path = '-I /home/archingis/STM32Cube/Repository/STM32Cube_FW_H7_V1.11.1/Drivers/CMSIS/Include',
+              },
+            },
+          },
+        },
+        -- require('mason').setup(),
+        -- require('mason-lspconfig').setup(),
+        -- require('lspconfig').clangd.setup {
+        --   cmd = { 'clangd' },
+        --   filetypes = { 'c', 'cpp', 'objc', 'objcpp' },
+        --   root_dir = require('lspconfig.util').root_pattern('compile_commands.json', '.git', '.'),
+        --   flags = {
+        --     debounce_text_changes = 150,
+        --   },
+        --   -- on_attach = function(client, bufnr)
+        --   --     -- Optional: Keymaps for LSP functionality
+        --   --     local bufopts = { noremap = true, silent = true, buffer = bufnr }
+        --   --     vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
+        --   --     vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
+        --   --     vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
+        --   -- end,
+        --   settings = {
+        --     clangd = {
+        --       arguments = {
+        --         '-I /home/archingis/STM32Cube/Repository/STM32Cube_FW_H7_V1.11.1/Drivers/Inc',
+        --         '-I /home/archingis/STM32Cube/Repository/STM32Cube_FW_H7_V1.11.1/Drivers/CMSIS/Device/ST/STM32H7xx/Include',
+        --         '-I /home/archingis/STM32Cube/Repository/STM32Cube_FW_H7_V1.11.1/Drivers/CMSIS/Include',
+        --       },
+        --     },
+        --   },
+        -- },
+        --
         pylsp = {},
         -- gopls = {},
         texlab = {},
