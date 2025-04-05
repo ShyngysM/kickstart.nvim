@@ -1097,8 +1097,8 @@ require('lazy').setup({
 -- NOTE: Shyngys's mappings
 vim.keymap.set('n', '<leader>tp', ':Telescope colorscheme <CR>', { desc = '[T]heme [P]icker' })
 vim.keymap.set('n', '<leader>tt', ':TransparentToggle <CR>', { desc = '[T]oggle [T]ransparency' })
-vim.keymap.set('n', '<leader>td', ':lua vim.diagnostic.disable() <CR>', { desc = 'Diagnostic [D]isable' })
-vim.keymap.set('n', '<leader>te', ':lua vim.diagnostic.enable() <CR>', { desc = 'Diagnostic [E]nable' })
+vim.keymap.set('n', '<leader>td', ':lua vim.diagnostic.enable(false) <CR>', { desc = 'Diagnostic [D]isable' })
+vim.keymap.set('n', '<leader>te', ':lua vim.diagnostic.enable(true) <CR>', { desc = 'Diagnostic [E]nable' })
 
 vim.keymap.set('n', '<leader>l', ':lua require("nvterm.terminal").toggle "vertical" <CR>', { desc = 'Toggle terminal vertical' })
 -- vim.keymap.set('t', '<leader>l', '<C-\\><C-n><CR> :lua require("nvterm.terminal").toggle "vertical" <CR>', { desc = 'Toggle terminal vertical' })
